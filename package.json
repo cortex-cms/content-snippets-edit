@@ -1,0 +1,34 @@
+{
+  "name": "content-snippets",
+  "version": "0.0.1",
+  "description": "A tool to enable in-page editing of elements, with an adaptable content backend",
+  "author": "Alex Tharp <toastercup@gmail.com>",
+  "license": "MIT",
+  "repository": "git://github.com/toastercup/content-snippets.git",
+  "keywords": [
+    "editable",
+    "snippet",
+    "cms",
+    "content"
+  ],
+  "devDependencies": {
+    "event-stream": "~3.3.0",
+    "main-bower-files": "~2.7.0",
+    "gulp": "~3.8.11",
+    "gulp-load-plugins": "~0.10.0",
+    "gulp-autoprefixer": "~2.2.0",
+    "gulp-concat": "~2.5.2",
+    "gulp-ruby-sass": "~1.0.5",
+    "gulp-riot": "~0.2.14",
+    "gulp-size": "~1.2.1",
+    "gulp-util": "~3.0.4",
+    "gulp-uglify": "~1.2.0",
+    "gulp-combine-mq": "~0.4.0",
+    "gulp-minify-css": "~1.1.1",
+    "gulp-rename": "~1.2.2",
+    "gulp-ignore": "~1.2.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

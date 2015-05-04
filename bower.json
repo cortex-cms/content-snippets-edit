@@ -1,0 +1,18 @@
+{
+  "name": "content-snippets",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "riot": "~2.0.15",
+    "q": "~1.3.0",
+    "qajax": "git@github.com:cb-talent-development/qajax#master",
+    "underscore": "1.8.3"
+  },
+  "resolutions": {
+    "q": "~1.3.0"
+  }
+}
