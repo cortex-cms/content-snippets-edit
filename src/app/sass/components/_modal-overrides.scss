@@ -1,0 +1,27 @@
+// Materialize's Modal is terrible in the most terrible way. We should move to something else ASAP.
+// Also, it turns out Materialize is just poor in general.
+
+.modal {
+  width: 80%;
+  overflow-x: hidden;
+  z-index: 10000 !important; // Just above CKEditor
+
+  .modal-content {
+    width: 100% !important;
+    overflow-y: scroll !important;
+    height: calc(100% - 45px) !important;
+  }
+
+  .modal-footer {
+    height: auto !important;
+
+    .btn-flat {
+      margin: auto !important;
+    }
+  }
+
+  &.modal-fixed-footer {
+    height: 80%;
+    max-height: 80%;
+  }
+}

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.cortex-scope {
+  // Resets
+  @import "normalize-scss/normalize";
+  @import "components/reset";
+
+  // Mixins
+  @import "materialize/sass/components/prefixer";
+  @import "materialize/sass/components/mixins";
+  @import "materialize/sass/components/color";
+
+  // Variables;
+  @import "materialize/sass/components/variables";
+
+  // Reset
+  @import "materialize/sass/components/normalize";
+
+  // HTML-tag-level crud from _global
+  line-height: 1.5;
+
+  @media only screen and (min-width: 0) {
+    font-size: 14px;
+  }
+
+  @media only screen and (min-width: $medium-screen) {
+    font-size: 14.5px;
+  }
+
+  @media only screen and (min-width: $large-screen) {
+    font-size: 15px;
+  }
+
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: $off-black;
+
+  // components
+  @import "materialize/sass/components/global";
+  @import "materialize/sass/components/icons-material-design";
+  @import "materialize/sass/components/grid";
+  @import "materialize/sass/components/typography";
+  @import "materialize/sass/components/cards";
+  @import "materialize/sass/components/toast";
+  @import "materialize/sass/components/tabs";
+  @import "materialize/sass/components/tooltip";
+  @import "materialize/sass/components/buttons";
+  @import "materialize/sass/components/dropdown";
+  @import "materialize/sass/components/waves";
+  @import "materialize/sass/components/modal";
+  @import "materialize/sass/components/collapsible";
+  @import "materialize/sass/components/materialbox";
+  @import "materialize/sass/components/form";
+
+  // icons
+  @import "components/icons";
+
+  // cortex-specific overrides
+  @import "components/modal-overrides";
+}

@@ -1,34 +1,36 @@
 {
-  "name": "content-snippets",
+  "name": "content-snippets-edit",
   "version": "0.0.1",
   "description": "A tool to enable in-page editing of elements, with an adaptable content backend",
-  "author": "Alex Tharp <toastercup@gmail.com>",
-  "license": "MIT",
-  "repository": "git://github.com/toastercup/content-snippets.git",
+  "author": "CB Content Enablement Product Team <ContentEnablementProductTeam@careerbuilder.com>",
+  "license": "Apache-2.0",
+  "repository": "git://github.com/cortex-cms/content-snippets-edit.git",
   "keywords": [
     "editable",
     "snippet",
     "cms",
-    "content"
+    "content",
+    "edit"
   ],
   "devDependencies": {
-    "event-stream": "~3.3.0",
-    "main-bower-files": "~2.7.0",
-    "gulp": "~3.8.11",
-    "gulp-load-plugins": "~0.10.0",
-    "gulp-autoprefixer": "~2.2.0",
-    "gulp-concat": "~2.5.2",
-    "gulp-ruby-sass": "~1.0.5",
-    "gulp-riot": "~0.2.14",
-    "gulp-size": "~1.2.1",
-    "gulp-util": "~3.0.4",
-    "gulp-uglify": "~1.2.0",
+    "gulp": "~3.9.0",
+    "gulp-load-plugins": "~1.0.0",
+    "gulp-autoprefixer": "~3.1.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-ruby-sass": "~2.0.5",
+    "gulp-riot": "~0.3.1",
+    "gulp-size": "~2.0.0",
+    "gulp-util": "~3.0.7",
+    "gulp-uglify": "~1.4.2",
     "gulp-combine-mq": "~0.4.0",
-    "gulp-minify-css": "~1.1.1",
+    "gulp-minify-css": "~1.2.1",
     "gulp-rename": "~1.2.2",
-    "gulp-ignore": "~1.2.1"
+    "gulp-ignore": "~2.0.1",
+    "main-bower-files": "~2.9.0",
+    "streamqueue": "~1.1.1",
+    "dotenv": "~1.2.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.2.1"
   }
 }

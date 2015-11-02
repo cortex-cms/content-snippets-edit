@@ -1,9 +1,11 @@
 'use strict';
 
-var applicationName = 'content-snippets',
+require('dotenv').load();
+var applicationName = 'content-snippets-edit',
   basePaths = {
     src: 'src/app/',
-    dest: 'dist/'
+    dest: 'dist/',
+    bower: 'bower_components'
   },
   paths = {
     scripts: {
@@ -16,10 +18,12 @@ var applicationName = 'content-snippets',
     }
   },
   appFiles = {
-    styles: paths.styles.src,
-    scripts: paths.scripts.src + '**/*.js'
+    styles: paths.styles.src + 'main.scss',
+    scripts: paths.scripts.src + '**/*.js',
+    riot: '**/tags/**'
   },
   vendorFiles = {
+    styles: 'src/vendor/**/*.css',
     scripts: 'src/vendor/**/*.js'
   },
   destFilenames = {
@@ -29,37 +33,29 @@ var applicationName = 'content-snippets',
     styleMin: applicationName + '.min.css'
   },
   gulp = require('gulp'),
-  es = require('event-stream'),
+  streamqueue = require('streamqueue'),
   bowerFiles = require('main-bower-files'),
   plugins = require("gulp-load-plugins")({
     pattern: ['gulp-*', 'gulp.*'],
     replaceString: /\bgulp[\-.]/
-  });
-
-var changeEvent = function (evt) {
-  plugins.util.log('File', plugins.util.colors.cyan(evt.path.replace(new RegExp('/.*(?=/' + basePaths.src + ')/'), '')), 'was', plugins.util.colors.magenta(evt.type));
-};
-
-var scriptsStream = function () {
-  return gulp.src([appFiles.scripts, vendorFiles.scripts, '!**/tags/**']);
-};
-
-var riotStream = function () {
-  return gulp.src('**/tags/**')
-    .pipe(plugins.riot());
-};
-
-var bowerStream = function () {
-  return gulp.src(bowerFiles({
+  }),
+  changeEvent = function (event) {
+    plugins.util.log('File', plugins.util.colors.cyan(event.path.replace(new RegExp('/.*(?=/' + basePaths.src + ')/'), '')), 'was', plugins.util.colors.magenta(event.type));
+  },
+  scriptsStream = gulp.src([vendorFiles.scripts, appFiles.scripts, '!**/tags/**']),
+  riotStream = gulp.src(appFiles.riot)
+    .pipe(plugins.riot()),
+  bowerStream = gulp.src(bowerFiles({
     filter: '**/*.js'
-  }));
-};
-
-gulp.task('sass', function () {
-  return plugins.rubySass(appFiles.styles)
+  })),
+  sassStream = plugins.rubySass(appFiles.styles, {loadPath: basePaths.bower})
     .on('error', function (err) {
       new plugins.util.PluginError('SASS', err, {showStack: true});
-    })
+    }),
+  vendorStylesStream = gulp.src(vendorFiles.styles);
+
+gulp.task('styles', function () {
+  return streamqueue({objectMode: true}, sassStream, vendorStylesStream)
     .pipe(plugins.concat(destFilenames.style))
     .pipe(plugins.autoprefixer('last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4', 'Firefox >= 4'))
     .pipe(plugins.size())
@@ -67,13 +63,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('scripts', function () {
-  return es.merge(scriptsStream(), riotStream(), bowerStream())
+  return streamqueue({objectMode: true}, bowerStream, riotStream, scriptsStream)
     .pipe(plugins.concat(destFilenames.script))
     .pipe(plugins.size())
     .pipe(gulp.dest(paths.scripts.dest));
 });
 
-gulp.task('minify-css', ['sass'], function () {
+gulp.task('minify-styles', ['styles'], function () {
   return gulp.src(paths.styles.dest + destFilenames.style)
     .pipe(plugins.combineMq())
     .pipe(plugins.minifyCss())
@@ -88,17 +84,17 @@ gulp.task('minify-scripts', ['scripts'], function () {
     .pipe(gulp.dest(paths.scripts.dest));
 });
 
-gulp.task('build', ['sass', 'scripts']);
+gulp.task('build', ['styles', 'scripts']);
 
 gulp.task('watch', ['build'], function () {
-  gulp.watch(appFiles.styles + '**/*.scss', ['sass']).on('change', function (evt) {
-    changeEvent(evt);
+  gulp.watch([paths.styles.src + '**/*.scss', vendorFiles.styles], ['styles']).on('change', function (event) {
+    changeEvent(event);
   });
-  gulp.watch([appFiles.scripts, vendorFiles.scripts], ['scripts']).on('change', function (evt) {
-    changeEvent(evt);
+  gulp.watch([appFiles.scripts, vendorFiles.scripts, appFiles.riot], ['scripts']).on('change', function (event) {
+    changeEvent(event);
   });
 });
 
-gulp.task('compile', ['minify-scripts', 'minify-css']);
+gulp.task('compile', ['minify-scripts', 'minify-styles']);
 
 gulp.task('default', ['build']);

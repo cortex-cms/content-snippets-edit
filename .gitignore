@@ -37,3 +37,9 @@ coverage
 # Dependency directories
 node_modules
 bower_components
+
+# Proprietary components
+redactor.*
+
+# Sensitive Environment-Specific Data
+.env
