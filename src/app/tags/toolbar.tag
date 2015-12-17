@@ -7,15 +7,18 @@
 
   <script>
     fluxableTag(this, RiotControl);
-    this.saveWebpage = function() {
+
+    this.saveWebpage = function(e) {
       RiotControl.trigger(constants.ACTIONS.SAVE_WEBPAGE);
     };
-    this.cancel = function() {
+
+    this.cancel = function(e) {
       parent.postMessage({event: constants.FRAME_ACTIONS.CANCEL_EDITOR}, '*');
     };
-    this.preview = function() {
+
+    this.preview = function(e) {
       $('.editor').removeClass('editor');
-    }
+    };
   </script>
 
   <style scoped>
