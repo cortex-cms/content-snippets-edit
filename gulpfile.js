@@ -20,7 +20,7 @@ var applicationName = 'content-snippets-edit',
   appFiles = {
     styles: paths.styles.src + 'main.scss',
     scripts: paths.scripts.src + '**/*.js',
-    riot: '**/tags/**'
+    riot: basePaths.src + 'tags/**'
   },
   vendorFiles = {
     styles: 'src/vendor/**/*.css',

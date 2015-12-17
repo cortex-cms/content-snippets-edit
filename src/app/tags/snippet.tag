@@ -1,13 +1,25 @@
 <snippet>
   <div class="editor" onblur="{ contentChanged }" contenteditable="true"><yield /></div>
+
   <script>
     fluxableTag(this, RiotControl);
     var self = this;
+
+    RiotControl.on(constants.ACTIONS.WEBPAGE_CHANGED, function(webpage) {
+      var foundSnippet = _.find(webpage.snippets, function(obj) {
+        return obj.document.name == opts.id;
+      });
+      if (typeof foundSnippet != "undefined") {
+        self.getElementsByClassName('editor')[0].innerHTML = foundSnippet.document.body;
+        self.update();
+      }
+    });
 
     this.contentChanged = function(event) {
       RiotControl.trigger(constants.ACTIONS.SNIPPET_CHANGED, {name: opts.id, body: event.target.innerHTML});
     }
   </script>
+
   <style scoped>
     .editor {
       box-shadow: 0px 0px 2px #ccc;

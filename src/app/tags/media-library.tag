@@ -68,15 +68,15 @@
       window.media_select_defer.resolve(e.item);
     }
 
-    mediasNext() {
+    mediasNext(e) {
       RiotControl.trigger(constants.ACTIONS.MEDIAS_NEXT);
     }
 
-    mediasPrevious() {
+    mediasPrevious(e) {
       RiotControl.trigger(constants.ACTIONS.MEDIAS_PREVIOUS);
     }
 
-    mediasSearch() {
+    mediasSearch(e) {
       RiotControl.trigger(constants.ACTIONS.MEDIAS_SEARCH, self.search.value);
     }
   </script>
