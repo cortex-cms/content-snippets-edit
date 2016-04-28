@@ -18,7 +18,7 @@
 
   WebpageStore.prototype._fetch = function() {
     return new Promise(function(resolve, reject) {
-      var url = window.location.href;
+      var url = location.protocol + '//' + location.host + location.pathname;
       this._api
         .get(config.API_ROUTES.WEBPAGES_FEED + '?url=' + encodeURIComponent(url))
         .then(function(webpage) {
@@ -38,7 +38,7 @@
       foundSnippetIndex = _.findIndex(this.webpage.snippets, function(obj) {
         return obj.document.name === snippet.name;
       });
-    
+
     if (foundSnippetIndex >= 0) {
       this.webpage.snippets[foundSnippetIndex].document.body = snippet.body;
     }

@@ -13,7 +13,6 @@
       INSERT_MEDIA: 'insert_media'
     },
     FRAME_ACTIONS: {
-      LOAD_EDITOR: 'load_editor',
       GET_MEDIAS: 'get_medias',
       MEDIAS_DATA: 'medias_data',
       CANCEL_EDITOR: 'cancel_editor',
