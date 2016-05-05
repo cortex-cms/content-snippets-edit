@@ -21,9 +21,9 @@
         MediasStore: new MediasStore()
       };
 
-      for (var k in stores) {
-        RiotControl.addStore(stores[k]);
-      }
+      _.each(stores, function(store) {
+        RiotControl.addStore(store);
+      });
 
       global.stores = stores;
 

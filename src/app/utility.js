@@ -1,30 +1,70 @@
-(function(global) {
+(function (global) {
   'use strict';
+
+  var getMediaHtml = function (media) {
+    // must use setAttribute for non-standard attributes
+    var getImageMediaElement = function (media) {
+        var image = document.createElement('img');
+        image.src = media.url;
+        image.alt = media.name;
+
+        return image;
+      },
+      getYoutubeMediaElement = function (media) {
+        var youtube = document.createElement('iframe');
+        youtube.setAttribute('type', 'text/html');
+        youtube.src = 'http://www.youtube.com/embed/' + media.video_id + '?rel=0&amp;enablejsapi=1controls=1&amp;showinfo=0&amp;wmode=transparent';
+        youtube.setAttribute('frameborder', '0');
+        youtube.style.position = 'absolute';
+        youtube.style.top = '0';
+        youtube.style.left = '0';
+        youtube.width = '100%';
+        youtube.height = '100%';
+
+        var fluidYoutubeWrap = document.createElement('div');
+        fluidYoutubeWrap.className = 'video--fluid';
+        fluidYoutubeWrap.style.height = '0';
+        fluidYoutubeWrap.style.maxWidth = '100%';
+        fluidYoutubeWrap.style.position = 'relative';
+        fluidYoutubeWrap.style.paddingBottom = '56.25%';
+        fluidYoutubeWrap.style.overflow = 'hidden';
+
+        fluidYoutubeWrap.appendChild(youtube);
+
+        return fluidYoutubeWrap;
+      },
+      getPdfMediaElement = function (media) {
+        var pdf = document.createElement('a');
+        pdf.href = media.url;
+        pdf.innerHTML = media.name;
+
+        return pdf;
+      },
+      mediaElement;
+
+    switch (media.content_type) {
+      case 'image':
+        mediaElement = getImageMediaElement(media);
+        break;
+      case 'youtube':
+        mediaElement = getYoutubeMediaElement(media);
+        break;
+      case 'pdf':
+        mediaElement = getPdfMediaElement(media);
+        break;
+    }
+
+    mediaElement.setAttribute('data-media-id', media.id);
+    return mediaElement.outerHTML;
+  };
 
   global.utility = {
     currentEditor: {},
     mediaLibraryModal: {},
-    insertMedia: function(media) {
+    insertMedia: function (media) {
       this.currentEditor.insertHtml(getMediaHtml(media));
       this.mediaLibraryModal.closeModal();
-    }
+    },
+    getMediaHtml: getMediaHtml
   };
-
-  var getMediaHtml = function(media) {
-    var media_html;
-
-    switch(media.content_type) {
-      case 'image':
-        media_html = '<img src="' + media.url + '" data-media-id="' + media.id + '" alt="' + media.name + '"></img>';
-        break;
-      case 'youtube':
-        media_html = '<iframe data-media-id="' + media.id + '" type="text/html" src="http://www.youtube.com/embed/' + media.video_id + '" frameborder="0" style="width: 100%; height: auto;" />';
-        break;
-      case 'pdf':
-        media_html = '<a href="' + media.url + '" data-media-id="' + media.id + '">' + media.name + '</a>';
-        break;
-    }
-
-    return media_html;
-  }
 }(this));
