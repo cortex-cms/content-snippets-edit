@@ -6,7 +6,6 @@
   @import "components/reset";
 
   // Mixins
-  @import "materialize/sass/components/prefixer";
   @import "materialize/sass/components/mixins";
   @import "materialize/sass/components/color";
 
@@ -39,6 +38,8 @@
   @import "materialize/sass/components/global";
   @import "materialize/sass/components/icons-material-design";
   @import "materialize/sass/components/grid";
+  @import "materialize/sass/components/navbar";
+  @import "materialize/sass/components/roboto";
   @import "materialize/sass/components/typography";
   @import "materialize/sass/components/cards";
   @import "materialize/sass/components/toast";
@@ -49,8 +50,17 @@
   @import "materialize/sass/components/waves";
   @import "materialize/sass/components/modal";
   @import "materialize/sass/components/collapsible";
+  @import "materialize/sass/components/chips";
   @import "materialize/sass/components/materialbox";
-  @import "materialize/sass/components/form";
+  @import "materialize/sass/components/forms/forms";
+  @import "materialize/sass/components/table_of_contents";
+  @import "materialize/sass/components/sideNav";
+  @import "materialize/sass/components/preloader";
+  @import "materialize/sass/components/slider";
+  @import "materialize/sass/components/carousel";
+  @import "materialize/sass/components/date_picker/default";
+  @import "materialize/sass/components/date_picker/default.date";
+  @import "materialize/sass/components/date_picker/default.time";
 
   // icons
   @import "components/icons";
