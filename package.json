@@ -1,6 +1,6 @@
 {
   "name": "content-snippets-edit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A tool to enable in-page editing of elements with Cortex as a backend",
   "author": "CB Content Enablement Product Team <ContentEnablementProductTeam@careerbuilder.com>",
   "license": "Apache-2.0",
@@ -13,24 +13,24 @@
     "edit"
   ],
   "devDependencies": {
-    "gulp": "~3.9.0",
-    "gulp-load-plugins": "~1.1.0",
+    "gulp": "~3.9.1",
+    "gulp-load-plugins": "~1.2.2",
     "gulp-autoprefixer": "~3.1.0",
     "gulp-concat": "~2.6.0",
     "gulp-ruby-sass": "~2.0.6",
-    "gulp-riot": "~0.4.2",
-    "gulp-size": "~2.0.0",
+    "gulp-riot": "~0.4.9",
+    "gulp-size": "~2.1.0",
     "gulp-util": "~3.0.7",
-    "gulp-uglify": "~1.5.1",
+    "gulp-uglify": "~1.5.3",
     "gulp-combine-mq": "~0.4.0",
-    "gulp-minify-css": "~1.2.2",
+    "gulp-minify-css": "~1.2.4",
     "gulp-rename": "~1.2.2",
     "gulp-ignore": "~2.0.1",
-    "main-bower-files": "~2.11.0",
+    "main-bower-files": "~2.13.0",
     "streamqueue": "~1.1.1",
-    "dotenv": "~1.2.0"
+    "dotenv": "~2.0.0"
   },
   "engines": {
-    "node": ">=4.2.1"
+    "node": ">=6.0.0"
   }
 }

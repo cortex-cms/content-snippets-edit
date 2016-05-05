@@ -49,6 +49,7 @@
 
   MediasStore.prototype._search = function(query) {
     this.page.query = query;
+    this.page.page = 1;
     this._fetch();
   };
 
