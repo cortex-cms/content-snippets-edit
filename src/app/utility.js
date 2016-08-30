@@ -13,7 +13,7 @@
       getYoutubeMediaElement = function (media) {
         var youtube = document.createElement('iframe');
         youtube.setAttribute('type', 'text/html');
-        youtube.src = 'http://www.youtube.com/embed/' + media.video_id + '?rel=0&amp;enablejsapi=1controls=1&amp;showinfo=0&amp;wmode=transparent';
+        youtube.src = 'https://www.youtube.com/embed/' + media.video_id + '?rel=0&amp;enablejsapi=1controls=1&amp;showinfo=0&amp;wmode=transparent';
         youtube.setAttribute('frameborder', '0');
         youtube.style.position = 'absolute';
         youtube.style.top = '0';
