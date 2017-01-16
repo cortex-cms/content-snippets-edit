@@ -1,5 +1,5 @@
 <snippet>
-  <div class="editor" onblur="{ contentChanged }" contenteditable="true"><yield /></div>
+  <div id="{ opts.id }" class="editor" onblur="{ contentChanged }" contenteditable="true"><yield /></div>
 
   <script>
     fluxableTag(this, RiotControl);
@@ -10,13 +10,13 @@
         return obj.document.name == opts.id;
       });
       if (typeof foundSnippet != "undefined") {
-        self.getElementsByClassName('editor')[0].innerHTML = foundSnippet.document.body;
-        self.update();
+        CKEDITOR.instances[opts.id].setData(foundSnippet.document.body);
       }
     });
 
     this.contentChanged = function(event) {
-      RiotControl.trigger(constants.ACTIONS.SNIPPET_CHANGED, {name: opts.id, body: event.target.innerHTML});
+      var body = CKEDITOR.instances[opts.id].getData();
+      RiotControl.trigger(constants.ACTIONS.SNIPPET_CHANGED, {name: opts.id, body: body});
     }
   </script>
 
