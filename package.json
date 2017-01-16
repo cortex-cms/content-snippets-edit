@@ -1,6 +1,6 @@
 {
   "name": "content-snippets-edit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A tool to enable in-page editing of elements with Cortex as a backend",
   "author": "CB Content Enablement Product Team <ContentEnablementProductTeam@careerbuilder.com>",
   "license": "Apache-2.0",

@@ -1,5 +1,5 @@
 <snippet>
-  <div class="editor" onblur="{ contentChanged }" contenteditable="true"><yield /></div>
+  <div id="{ opts.id }" class="editor" onblur="{ contentChanged }" contenteditable="true"><yield /></div>
 
   <script>
     fluxableTag(this, RiotControl);
@@ -16,7 +16,8 @@
     });
 
     this.contentChanged = function(event) {
-      RiotControl.trigger(constants.ACTIONS.SNIPPET_CHANGED, {name: opts.id, body: event.target.innerHTML});
+      var body = CKEDITOR.instances[event.target.id].getData();
+      RiotControl.trigger(constants.ACTIONS.SNIPPET_CHANGED, {name: opts.id, body: body});
     }
   </script>
 
