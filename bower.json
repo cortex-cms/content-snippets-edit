@@ -7,11 +7,11 @@
     "components"
   ],
   "dependencies": {
-    "riot": "~2.3.18",
+    "riot": "~3.0.7",
     "q": "~1.3.0",
     "qajax": "git@github.com:cb-talent-development/qajax#master",
     "underscore": "~1.8.3",
-    "materialize": "~0.97.6",
+    "materialize": "~0.97.8",
     "normalize-scss": "~3.0"
   },
   "resolutions": {

@@ -10,13 +10,12 @@
         return obj.document.name == opts.id;
       });
       if (typeof foundSnippet != "undefined") {
-        self.getElementsByClassName('editor')[0].innerHTML = foundSnippet.document.body;
-        self.update();
+        CKEDITOR.instances[opts.id].setData(foundSnippet.document.body);
       }
     });
 
     this.contentChanged = function(event) {
-      var body = CKEDITOR.instances[event.target.id].getData();
+      var body = CKEDITOR.instances[opts.id].getData();
       RiotControl.trigger(constants.ACTIONS.SNIPPET_CHANGED, {name: opts.id, body: body});
     }
   </script>
