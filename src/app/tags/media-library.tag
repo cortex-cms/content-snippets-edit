@@ -19,7 +19,7 @@
           <p><strong>Description: </strong>{ description }</p>
           <p><strong>Tags: </strong>
               <span each={ tag in tag_list }>
-                <a href="#" onclick={ parent.searchMedia(tag) }>{ tag }</a>
+                <a href="#" onclick={ parent.mediasSearch(tag) }>{ tag }</a>
               </span>
           </p>
 
@@ -77,7 +77,6 @@
     }
 
     mediasSearch(e) {
-      RiotControl.trigger(constants.ACTIONS.MEDIAS_SEARCH, self.search.value);
     }
   </script>
 </media-library>

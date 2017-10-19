@@ -16,12 +16,12 @@
    */
 
   global.config = {
-    API_BASE: 'https://api.cbcortex.com/api/v1',
-    API_ROUTES: {
+	  API_BASE: 'http://localhost:3000/api/v1',
+      API_ROUTES: {
       WEBPAGES: '/webpages',
       WEBPAGES_FEED: '/webpages/feed'
     },
     CONTENT_SNIPPETS_EDIT_CSS_URL: 'https://s3.amazonaws.com/cortex-content-snippets/content-snippets-edit.css',
-    CKEDITOR_PLUGINS_URL: 'https://admin.cbcortex.com/ckeditor-plugins/'
+    CKEDITOR_PLUGINS_URL: 'http://localhost:3000/ckeditor-plugins/'
   };
 }(this));
